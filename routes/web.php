@@ -17,7 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
+
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'admin3'])->name('admin');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['role']);
 //Route::get('/restricted', [App\Http\Controllers\HomeController::class, 'restricted'])->middleware(['role']);

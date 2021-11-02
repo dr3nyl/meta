@@ -34,4 +34,10 @@ class HomeController extends Controller
         }
     }
 
+    public function admin3()
+    {
+
+        return view('admin.index3');
+    }
+
 }
