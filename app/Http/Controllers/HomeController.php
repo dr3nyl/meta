@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Events\WebSocketDemoEvent;
 
 class HomeController extends Controller
 {
@@ -24,13 +25,16 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        broadcast(new WebSocketDemoEvent('Some data'));
+        
         if (Auth::user()->role == 0)
         {
             return view('home', ['role' => 'Admin']);
         }
         else
         {
-            return view('home', ['role' => 'Client']);
+            return view('admin.index3', ['role' => 'Client']);
         }
     }
 
